@@ -1,0 +1,23 @@
+.input {
+  width: 420px;
+  background-color: rgb(255, 220, 65);
+  margin: 10px;
+  box-sizing: border-box;
+  padding: 5px 10px;
+  height: 30px;
+  font-weight: 500;
+}
+.head {
+  width: 440px;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+.disclaimer {
+  font-size: 8px;
+  width: 440px;
+  text-align: center;
+  color: gray;
+  margin: 0;
+  padding: 0;
+}

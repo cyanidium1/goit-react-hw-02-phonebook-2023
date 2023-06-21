@@ -1,0 +1,28 @@
+.form {
+  display: flex;
+  flex-direction: row;
+}
+.item {
+  width: 150px;
+  background-color: rgb(255, 220, 65);
+  margin: 10px;
+  box-sizing: border-box;
+  padding: 5px 10px;
+  height: 30px;
+  border: none;
+  outline: none;
+}
+.btn {
+  width: 80px;
+  background-color: rgb(255, 220, 65);
+  margin: 10px;
+  box-sizing: border-box;
+  padding: 5px 10px;
+  height: 30px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: rgb(204, 176, 49);
+}

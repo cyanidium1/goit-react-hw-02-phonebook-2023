@@ -1,0 +1,34 @@
+.item {
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+.name {
+  width: 150px;
+  background-color: rgb(191, 255, 182);
+  margin: 10px;
+  box-sizing: border-box;
+  padding: 5px 10px;
+  height: 30px;
+}
+.tel {
+  width: 150px;
+  background-color: rgb(191, 255, 182);
+  margin: 10px;
+  box-sizing: border-box;
+  padding: 5px 10px;
+  height: 30px;
+}
+.btn {
+  width: 30px;
+  background-color: rgb(219, 255, 134);
+  margin: 10px;
+  box-sizing: border-box;
+  padding: 5px 5px;
+  height: 30px;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: rgb(177, 206, 111);
+}
