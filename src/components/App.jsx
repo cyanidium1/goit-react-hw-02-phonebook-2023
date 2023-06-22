@@ -6,7 +6,7 @@ import Kek from './SeniorCodingExamples/SeniorCodingExamples';
 
 export class App extends Component {
   state = {
-    book: [
+    contacts: [
       { name: 'Kek', tel: '+38077700632', id: 0 },
       { name: 'Ajax', tel: '+102', id: 1 },
       { name: 'Bob', tel: '+787898', id: 2 },
@@ -17,15 +17,15 @@ export class App extends Component {
   };
 
   deleteItem = id => {
-    this.setState(({ book }) => {
+    this.setState(({ contacts }) => {
       return {
-        book: book.filter(el => el.id !== id),
+        contacts: contacts.filter(el => el.id !== id),
       };
     });
   };
 
   addItem = (name, tel) => {
-    const isExist = this.state.book.find(
+    const isExist = this.state.contacts.find(
       e => e.name.toLocaleLowerCase() === name.toLocaleLowerCase()
     );
     if (isExist) {
@@ -35,21 +35,21 @@ export class App extends Component {
     if (name && tel) {
       this.setState(state => {
         const newSt = [
-          ...state.book,
+          ...state.contacts,
           {
             name: name,
             tel: tel,
             id:
-              this.state.book.length === 0
+              this.state.contacts.length === 0
                 ? 0
-                : this.state.book[this.state.book.length - 1].id + 1,
+                : this.state.contacts[this.state.contacts.length - 1].id + 1,
             key:
-              this.state.book.length === 0
+              this.state.contacts.length === 0
                 ? 0
-                : this.state.book[this.state.book.length - 1].id + 1,
+                : this.state.contacts[this.state.contacts.length - 1].id + 1,
           },
         ];
-        return { book: newSt };
+        return { contacts: newSt };
       });
     } else {
       alert('Input valid data');
@@ -65,9 +65,9 @@ export class App extends Component {
 
     // let searchedItems = [];
     // if ((this.state.filter = '')) {
-    //   searchedItems = this.state.book;
+    //   searchedItems = this.state.contacts;
     // }
-    // this.state.book.forEach(el => {
+    // this.state.contacts.forEach(el => {
     //   if (el.name.toLowerCase().includes(this.state.filter.toLowerCase())) {
     //     searchedItems.push(el);
     //   }
@@ -87,7 +87,7 @@ export class App extends Component {
       >
         <Searcher searchItem={this.searchItem} />
         <Contacts
-          telBook={this.state.book}
+          contacts={this.state.contacts}
           // telBook={this.searchedItems}
           deleteItem={this.deleteItem}
           search={this.state.filter}

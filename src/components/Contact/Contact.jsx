@@ -11,7 +11,7 @@ class Contact extends Component {
   };
 
   render() {
-    const { name, id, tel } = this.props.telBook;
+    const { name, id, tel } = this.props.contacts;
     return (
       <li className={css.item}>
         <p className={css.name} style={this.state}>
@@ -54,7 +54,7 @@ class Contact extends Component {
 }
 
 Contact.propTypes = {
-  telBook: PropTypes.shape({
+  contacts: PropTypes.shape({
     name: PropTypes.string,
     tel: PropTypes.string,
     id: PropTypes.number,

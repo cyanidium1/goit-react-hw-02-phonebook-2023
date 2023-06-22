@@ -2,21 +2,21 @@ import Contact from 'components/Contact/Contact';
 import css from './Contacts.module.css';
 import PropTypes from 'prop-types';
 
-const Contacts = ({ telBook, deleteItem, search }) => {
+const Contacts = ({ contacts, deleteItem, search }) => {
   if (search === '') {
     return (
       <div className={css.list}>
-        {telBook.map(el => (
-          <Contact telBook={el} key={el.id} deleteItem={deleteItem} />
+        {contacts.map(el => (
+          <Contact contacts={el} key={el.id} deleteItem={deleteItem} />
         ))}
       </div>
     );
   }
   return (
     <div className={css.list}>
-      {telBook.map(el =>
+      {contacts.map(el =>
         el.name.toLowerCase().includes(search.toLowerCase()) ? (
-          <Contact telBook={el} key={el.id} deleteItem={deleteItem} />
+          <Contact contacts={el} key={el.id} deleteItem={deleteItem} />
         ) : null
       )}
     </div>
@@ -25,7 +25,7 @@ const Contacts = ({ telBook, deleteItem, search }) => {
 
 Contacts.propTypes = {
   deleteItem: PropTypes.func.isRequired,
-  telBook: PropTypes.array.isRequired,
+  contacts: PropTypes.array.isRequired,
   search: PropTypes.string,
 };
 
