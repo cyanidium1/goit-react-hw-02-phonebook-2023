@@ -1,4 +1,4 @@
-import kek from './bike.gif';
+import kek from '../../images/bike.gif';
 import css from './SeniorCodingExamples.module.css';
 import { Component } from 'react';
 

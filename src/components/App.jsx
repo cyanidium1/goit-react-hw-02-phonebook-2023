@@ -7,11 +7,11 @@ import Kek from './SeniorCodingExamples/SeniorCodingExamples';
 export class App extends Component {
   state = {
     book: [
-      { name: 'Kek', tel: '+380777', id: 0 },
+      { name: 'Kek', tel: '+38077700632', id: 0 },
       { name: 'Ajax', tel: '+102', id: 1 },
-      { name: 'Bob', tel: '787898', id: 2 },
-      { name: 'Johny', tel: 'они на деревьях', id: 3 },
-      { name: 'Kenny', tel: 'dead', id: 4 },
+      { name: 'Bob', tel: '+787898', id: 2 },
+      { name: 'Johny', tel: '+373310203', id: 3 },
+      { name: 'Kenny', tel: '+80765436621', id: 4 },
     ],
     filter: '',
   };
@@ -22,30 +22,33 @@ export class App extends Component {
         book: book.filter(el => el.id !== id),
       };
     });
-    return this.state.book;
   };
 
   addItem = (name, tel) => {
-    const names = [...this.state.book].map(el => el.name);
-    if (names.includes(name)) {
+    const isExist = this.state.book.find(
+      e => e.name.toLocaleLowerCase() === name.toLocaleLowerCase()
+    );
+    if (isExist) {
       alert('Already exists');
       return;
     }
     if (name && tel) {
-      const contact = {
-        name: name,
-        tel: tel,
-        id:
-          this.state.book.length === 0
-            ? 0
-            : this.state.book[this.state.book.length - 1].id + 1,
-        key:
-          this.state.book.length === 0
-            ? 0
-            : this.state.book[this.state.book.length - 1].id + 1,
-      };
       this.setState(state => {
-        const newSt = [...state.book, contact];
+        const newSt = [
+          ...state.book,
+          {
+            name: name,
+            tel: tel,
+            id:
+              this.state.book.length === 0
+                ? 0
+                : this.state.book[this.state.book.length - 1].id + 1,
+            key:
+              this.state.book.length === 0
+                ? 0
+                : this.state.book[this.state.book.length - 1].id + 1,
+          },
+        ];
         return { book: newSt };
       });
     } else {
@@ -57,20 +60,41 @@ export class App extends Component {
     this.setState({
       filter: input,
     });
+
+    //idk why it doesn't workkk
+
+    // let searchedItems = [];
+    // if ((this.state.filter = '')) {
+    //   searchedItems = this.state.book;
+    // }
+    // this.state.book.forEach(el => {
+    //   if (el.name.toLowerCase().includes(this.state.filter.toLowerCase())) {
+    //     searchedItems.push(el);
+    //   }
+    // });
+    // console.log(searchedItems);
   };
 
   render() {
     return (
-      <>
+      <div
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          justifyContent: 'center',
+        }}
+      >
         <Searcher searchItem={this.searchItem} />
         <Contacts
           telBook={this.state.book}
+          // telBook={this.searchedItems}
           deleteItem={this.deleteItem}
           search={this.state.filter}
         />
         <Adder addItem={this.addItem} />
         <Kek />
-      </>
+      </div>
     );
   }
 }
