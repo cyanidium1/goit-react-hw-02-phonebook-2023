@@ -1,5 +1,5 @@
 import { Component } from 'react';
-import Adder from './Adder/Adder';
+import Form from './Form/Form';
 import Contacts from './Contacts/Contacts';
 import Searcher from './Searcher/Searcher';
 import Kek from './SeniorCodingExamples/SeniorCodingExamples';
@@ -32,47 +32,33 @@ export class App extends Component {
       alert('Already exists');
       return;
     }
-    if (name && tel) {
-      this.setState(state => {
-        const newSt = [
-          ...state.contacts,
-          {
-            name: name,
-            tel: tel,
-            id:
-              this.state.contacts.length === 0
-                ? 0
-                : this.state.contacts[this.state.contacts.length - 1].id + 1,
-            key:
-              this.state.contacts.length === 0
-                ? 0
-                : this.state.contacts[this.state.contacts.length - 1].id + 1,
-          },
-        ];
-        return { contacts: newSt };
-      });
-    } else {
-      alert('Input valid data');
-    }
+
+    this.setState(state => {
+      const newSt = [
+        ...state.contacts,
+        {
+          name: name,
+          tel: tel,
+          id: this.state.contacts[this.state.contacts.length - 1].id + 1,
+          key: this.state.contacts[this.state.contacts.length - 1].id + 1,
+        },
+      ];
+      return { contacts: newSt };
+    });
   };
 
+  result = [];
   searchItem = input => {
     this.setState({
       filter: input,
     });
-
-    //idk why it doesn't workkk
-
-    // let searchedItems = [];
-    // if ((this.state.filter = '')) {
-    //   searchedItems = this.state.contacts;
-    // }
-    // this.state.contacts.forEach(el => {
-    //   if (el.name.toLowerCase().includes(this.state.filter.toLowerCase())) {
-    //     searchedItems.push(el);
-    //   }
-    // });
-    // console.log(searchedItems);
+    this.result =
+      this.state.filter === ''
+        ? this.state.contacts
+        : this.state.contacts.filter(el =>
+            el.name.toLowerCase().includes(this.state.filter.toLowerCase())
+          );
+    console.log(this.result);
   };
 
   render() {
@@ -87,12 +73,12 @@ export class App extends Component {
       >
         <Searcher searchItem={this.searchItem} />
         <Contacts
-          contacts={this.state.contacts}
-          // telBook={this.searchedItems}
+          // contacts={this.result}
+          telBook={this.searchedItems}
           deleteItem={this.deleteItem}
           search={this.state.filter}
         />
-        <Adder addItem={this.addItem} />
+        <Form addItem={this.addItem} />
         <Kek />
       </div>
     );

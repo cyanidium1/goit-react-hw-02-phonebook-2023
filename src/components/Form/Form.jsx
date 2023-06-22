@@ -1,7 +1,7 @@
-import css from './Adder.module.css';
+import css from './Form.module.css';
 import PropTypes from 'prop-types';
 
-const Adder = ({ addItem }) => {
+const Form = ({ addItem }) => {
   return (
     <form
       className={css.form}
@@ -31,8 +31,8 @@ const Adder = ({ addItem }) => {
   );
 };
 
-Adder.propTypes = {
+Form.propTypes = {
   addItem: PropTypes.func.isRequired,
 };
 
-export default Adder;
+export default Form;
