@@ -2,23 +2,13 @@ import Contact from 'components/Contact/Contact';
 import css from './Contacts.module.css';
 import PropTypes from 'prop-types';
 
-const Contacts = ({ contacts, deleteItem, search }) => {
-  if (search === '') {
-    return (
-      <div className={css.list}>
-        {contacts.map(el => (
-          <Contact contacts={el} key={el.id} deleteItem={deleteItem} />
-        ))}
-      </div>
-    );
-  }
+const Contacts = ({ contacts, deleteItem }) => {
+  console.log(contacts);
   return (
     <div className={css.list}>
-      {contacts.map(el =>
-        el.name.toLowerCase().includes(search.toLowerCase()) ? (
-          <Contact contacts={el} key={el.id} deleteItem={deleteItem} />
-        ) : null
-      )}
+      {contacts.map(el => (
+        <Contact contacts={el} key={el.id} deleteItem={deleteItem} />
+      ))}
     </div>
   );
 };

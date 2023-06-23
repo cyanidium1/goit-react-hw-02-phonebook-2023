@@ -1,7 +1,7 @@
-import css from './Searcher.module.css';
+import css from './Input.module.css';
 import PropTypes from 'prop-types';
 
-const Searcher = ({ searchItem }) => {
+const Input = ({ searchItem }) => {
   return (
     <>
       <h2 className={css.head}>Phone book</h2>
@@ -16,8 +16,8 @@ const Searcher = ({ searchItem }) => {
   );
 };
 
-Searcher.propTypes = {
+Input.propTypes = {
   searchItem: PropTypes.func,
 };
 
-export default Searcher;
+export default Input;

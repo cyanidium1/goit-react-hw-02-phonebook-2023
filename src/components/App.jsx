@@ -1,7 +1,7 @@
 import { Component } from 'react';
 import Form from './Form/Form';
 import Contacts from './Contacts/Contacts';
-import Searcher from './Searcher/Searcher';
+import Input from './Input/Input';
 import Kek from './SeniorCodingExamples/SeniorCodingExamples';
 
 export class App extends Component {
@@ -40,27 +40,22 @@ export class App extends Component {
           name: name,
           tel: tel,
           id: this.state.contacts[this.state.contacts.length - 1].id + 1,
-          key: this.state.contacts[this.state.contacts.length - 1].id + 1,
         },
       ];
       return { contacts: newSt };
     });
   };
 
-  result = [];
   searchItem = input => {
     this.setState({
       filter: input,
     });
-    this.result =
-      this.state.filter === ''
-        ? this.state.contacts
-        : this.state.contacts.filter(el =>
-            el.name.toLowerCase().includes(this.state.filter.toLowerCase())
-          );
-    console.log(this.result);
   };
-
+  filteredcontacts = () => {
+    return this.state.contacts.filter(el =>
+      el.name.toLowerCase().includes(this.state.filter.toLowerCase())
+    );
+  };
   render() {
     return (
       <div
@@ -71,12 +66,10 @@ export class App extends Component {
           justifyContent: 'center',
         }}
       >
-        <Searcher searchItem={this.searchItem} />
+        <Input searchItem={this.searchItem} />
         <Contacts
-          // contacts={this.result}
-          telBook={this.searchedItems}
+          contacts={this.filteredcontacts()}
           deleteItem={this.deleteItem}
-          search={this.state.filter}
         />
         <Form addItem={this.addItem} />
         <Kek />
